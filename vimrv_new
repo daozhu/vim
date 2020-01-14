@@ -15,6 +15,14 @@ if v:progname =~? "evim"
   finish
 endif
 
+" CTL+] 跳转 CTL+w+] 新窗口跳转                                                  
+"set tags=/tmp/ctagsfiles;                                                        
+" 相同的tag 手动选择                                                             
+"set cscopetag                                                                    
+"set fdm=indent                                                                   
+"set autochdir                                                                   
+set nu
+
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -671,3 +679,24 @@ autocmd BufNewFile,BufRead *.fan        set filetype=perl6
 set colorcolumn=81
 
 highlight ColorColumn ctermbg=8
+
+
+" 按F8按钮，在窗口的左侧出现taglist的窗口,像vc的左侧的workpace                   
+nnoremap <silent> <F8> :TlistToggle<CR><CR>                                      
+" :Tlist              调用TagList                                                
+let Tlist_Show_One_File=0                    " 只显示当前文件的tags              
+let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim
+let Tlist_Use_Right_Window=1                 " 在右侧窗口中显示                  
+let Tlist_File_Fold_Auto_Close=1             " 自动折叠                          
+                                                                                 
+                                                                                 
+" 光标移动到函数处，  :Dox 生成函数注释   在类名的上一行 :DoxAuthor              
+" 则生成类的信息（note/author/date/version/filename）                            
+let g:DoxygenToolkit_briefTag_pre="note"                                         
+let g:DoxygenToolkit_paramTag_pre="@param "                                      
+let g:DoxygenToolkit_returnTag="@return"                                         
+let g:DoxygenToolkit_classTag="@class "                                          
+"let g:DoxygenToolkit_blockHeader="*************************************************************************"
+"let g:DoxygenToolkit_blockFooter="*****************************************************************************"
+let g:DoxygenToolkit_authorName="daozhu"                                         
+let g:DoxygenToolkit_licenseTag="My own license"
